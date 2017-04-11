@@ -1,0 +1,23 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Bamazon is an Amazon like store which uses MySQL and Node.",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daquilino/MySQL-Node-Store.git"
+  },
+  "author": "Douglas Aquilino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daquilino/MySQL-Node-Store/issues"
+  },
+  "homepage": "https://github.com/daquilino/MySQL-Node-Store#readme",
+  "dependencies": {
+    "mysql": "^2.13.0",
+    "prompt": "^1.0.0"
+  }
+}
