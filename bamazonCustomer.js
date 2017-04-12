@@ -16,11 +16,15 @@ const CONNECTION = MYSQL.createConnection({
  database: 'Bamazon_db'
 });
 
+//=============================================================================
 
 function start()
 {
 	displayProducts();	
 }
+
+
+//=============================================================================
 
 function displayProducts()
 {
@@ -28,13 +32,16 @@ function displayProducts()
 	CONNECTION.query('SELECT * FROM products', function (error, results, fields) {	
 		if (error) throw error;
 		
+		//Stores results ('products' table data)
 		const INVENTORY = results;
 		
+		//Instantiates table using 'cli-table' package.
 		let table = new TABLE({
     		head: ['Item Id', 'Product Name', 'Price'],
  			colWidths: [10, 20,20]
  		});
 
+		//Pushes 'rows' to table
 		for(let key in INVENTORY)
 		{
 			table.push([INVENTORY[key].item_id, INVENTORY[key].product_name, "$" + INVENTORY[key].price ]);
@@ -44,16 +51,13 @@ function displayProducts()
 		console.log(table.toString());
 
 		orderPrompt(INVENTORY);		 
-	});
-
-	
+	});	
 }
 
-
+//=============================================================================
 
 function orderPrompt(inventory)
-{
-	
+{	
 	INQUIRER.prompt([
 		{
 			type: "input",
@@ -66,7 +70,6 @@ function orderPrompt(inventory)
 			type: "input",
 			message: "Please Enter Quantity:",
 			name: "orderQuantity"
-
 		}
 
 	]).then((data) => {
@@ -92,11 +95,10 @@ function orderPrompt(inventory)
 		{
 			updateInventory(product, orderQuantity);
 		}	
-
-
 	});
 }//END promptUser
 
+//=============================================================================
 
 function updateInventory(product, orderQuantity)
 {
@@ -116,7 +118,6 @@ function updateInventory(product, orderQuantity)
 				name: "confirm"
 			}	
 
-
 		]).then(function(answer){
 
 			if(answer.confirm)
@@ -131,10 +132,8 @@ function updateInventory(product, orderQuantity)
 			}
 		})
 	});
-
 	
 }//END updateInventory
-
 
 CONNECTION.connect();
 
