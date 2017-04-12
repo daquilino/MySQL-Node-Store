@@ -65,18 +65,13 @@ function orderPrompt(inventory)
 			name: "id",
 			filter: id => parseInt(id), 
 			validate: id => ((inventory.filter(e => e.item_id == id)).length > 0) ?true : console.log("\n There is no ID of", id, "Please Enter ID From Table.")
-		},
-		{
-			type: "input",
-			message: "Please Enter Quantity:",
-			name: "orderQuantity"
 		}
-
+	
 	]).then((data) => {
 
 		let id = data.id;
-		let orderQuantity = parseInt(data.orderQuantity);	
-		
+			
+
 		//'product' is row of product with 'item_id' of 'id' from 'products' table. 
 		//I get 'product' from the first element of returned array from 'filter'
 		// where item_id of object elements (e.item_id) equal 'id' for each 'inventory' element.
@@ -86,15 +81,20 @@ function orderPrompt(inventory)
 
 		let productQuantity = product.stock_quantity;  
 
-		if(productQuantity < orderQuantity)
+		INQUIRER.prompt([
+		
 		{
-			console.log("Insufficient quantity!");
-			start();
+			type: "input",
+			message: "Please Enter Quantity:",
+			name: "orderQuantity",
+			filter: q => parseInt(q), 
+			validate: q => (q > 0 && q <= productQuantity) ?true : console.log("\n\nInsufficient quantity! Quantity must be 1 -" , productQuantity)
 		}
-		else
-		{
-			updateInventory(product, orderQuantity);
-		}	
+		]).then(function(quantity){
+						
+			updateInventory(product, quantity.orderQuantity);
+		
+		});	
 	});
 }//END promptUser
 
