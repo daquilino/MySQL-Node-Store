@@ -72,7 +72,7 @@ function orderPrompt(inventory)
 	]).then((data) => {
 
 		let id = data.id;
-		
+		let orderQuantity = parseInt(data.orderQuantity);	
 		
 		let itemobj = inventory.filter(e => e.item_id == id)[0]
 		//Assigns 'itemQuantity' the 'stock_quanity' of returned array from 'filter'
