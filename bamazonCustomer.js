@@ -71,7 +71,6 @@ function orderPrompt(inventory)
 
 		let id = data.id;
 			
-
 		//'product' is row of product with 'item_id' of 'id' from 'products' table. 
 		//I get 'product' from the first element of returned array from 'filter'
 		// where item_id of object elements (e.item_id) equal 'id' for each 'inventory' element.
@@ -81,20 +80,56 @@ function orderPrompt(inventory)
 
 		let productQuantity = product.stock_quantity;  
 
-		INQUIRER.prompt([
-		
+
+//ADD CODE HERE TO CHECK IF stock_quantity IS ZERO.
+	// IF SO CONSOLE SORRRY PRODCTU IS SOUT OF STOCK
+		//PROMPT WOULD YOU LIKE TO PURCHASE ANOTHER ITEM?
+			// IF YES orderPrompt()
+			// if no close connection return.
+
+		if (productQuantity == 0)
 		{
-			type: "input",
-			message: "Please Enter Quantity:",
-			name: "orderQuantity",
-			filter: q => parseInt(q), 
-			validate: q => (q > 0 && q <= productQuantity) ?true : console.log("\n\nInsufficient quantity! Quantity must be 1 -" , productQuantity)
-		}
-		]).then(function(quantity){
-						
-			updateInventory(product, quantity.orderQuantity);
-		
-		});	
+			console.log("\nSorry", product.product_name, "Is OUT OF STOCK.");
+
+			INQUIRER.prompt([
+			{
+				type: "confirm",
+				message: "Would You Like To Purchase Another Item?",
+				name: "confirm"
+			}	
+
+			]).then(function(answer){
+
+			if(answer.confirm)
+			{
+				orderPrompt(inventory);
+			}
+			else
+			{ 
+				//else end connection, quit app.
+				console.log("\nGOODBYE!");
+				CONNECTION.end();
+			}
+			})
+
+		}			
+		else
+		{	
+			INQUIRER.prompt([
+			
+			{
+				type: "input",
+				message: "Please Enter Quantity:",
+				name: "orderQuantity",
+				filter: q => parseInt(q), 
+				validate: q => (q > 0 && q <= productQuantity) ?true : console.log("\n\nInsufficient quantity! Quantity must be 1 -" , productQuantity)
+			}
+			]).then(function(quantity){
+							
+				updateInventory(product, quantity.orderQuantity);
+			
+			});
+		}		
 	});
 }//END promptUser
 
