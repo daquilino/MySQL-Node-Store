@@ -5,15 +5,15 @@ const MYSQL = require('mysql');
 const PW = require('./pw.js');
 
 const CONNECTION = MYSQL.createConnection({
- host: "localhost",
- port: 3306,
+	host: "localhost",
+	port: 3306,
 
- // Your username
- user: 'root',
+	// Your username
+	user: 'root',
 
- // Your password
- password: PW.pw,
- database: 'Bamazon_db'
+	// Your password
+	password: PW.pw,
+	database: 'Bamazon_db'
 });
 
 //=============================================================================
@@ -83,41 +83,41 @@ function orderPrompt(inventory)
 			console.log("\nSorry", product.product_name, "Is OUT OF STOCK.");
 
 			INQUIRER.prompt([
-			{
-				type: "confirm",
-				message: "Would You Like To Purchase Another Item?",
-				name: "confirm"
-			}	
+				{
+					type: "confirm",
+					message: "Would You Like To Purchase Another Item?",
+					name: "confirm"
+				}	
 
-			]).then(function(answer){
+				]).then(function(answer){
 
-			if(answer.confirm)
-			{
-				orderPrompt(inventory);
-			}
-			else
-			{ 
-				//else end connection, quit app.
-				console.log("\nGOODBYE!");
-				CONNECTION.end();
-			}
+				if(answer.confirm)
+				{
+					orderPrompt(inventory);
+				}
+				else
+				{ 
+					//else end connection, quit app.
+					console.log("\nGOODBYE!");
+					CONNECTION.end();
+				}
 			})
 		}			
 		else
 		{	
 			INQUIRER.prompt([
 			
-			{
-				type: "input",
-				message: "Please Enter Quantity:",
-				name: "orderQuantity",
-				filter: q => parseInt(q), 
-				validate: q => (q > 0 && q <= productQuantity) ?true : console.log("\n\nInsufficient quantity! Quantity must be 1 -" , productQuantity)
-			}
-			]).then(function(quantity){
-							
-				updateInventory(product, quantity.orderQuantity);			
-			});
+				{
+					type: "input",
+					message: "Please Enter Quantity:",
+					name: "orderQuantity",
+					filter: q => parseInt(q), 
+					validate: q => (q > 0 && q <= productQuantity) ?true : console.log("\n\nInsufficient quantity! Quantity must be 1 -" , productQuantity)
+				}
+				]).then(function(quantity){
+								
+					updateInventory(product, quantity.orderQuantity);			
+				});
 		}		
 	});
 }//END promptUser
