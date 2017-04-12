@@ -23,7 +23,6 @@ function start()
 	displayProducts();	
 }
 
-
 //=============================================================================
 
 function displayProducts()
@@ -77,15 +76,7 @@ function orderPrompt(inventory)
 		// Since 'item_id' is unique, returned array has only one element (hence [0]).
 		let product = inventory.filter(e => e.item_id == id)[0]
 		
-
 		let productQuantity = product.stock_quantity;  
-
-
-//ADD CODE HERE TO CHECK IF stock_quantity IS ZERO.
-	// IF SO CONSOLE SORRRY PRODCTU IS SOUT OF STOCK
-		//PROMPT WOULD YOU LIKE TO PURCHASE ANOTHER ITEM?
-			// IF YES orderPrompt()
-			// if no close connection return.
 
 		if (productQuantity == 0)
 		{
@@ -111,7 +102,6 @@ function orderPrompt(inventory)
 				CONNECTION.end();
 			}
 			})
-
 		}			
 		else
 		{	
@@ -126,8 +116,7 @@ function orderPrompt(inventory)
 			}
 			]).then(function(quantity){
 							
-				updateInventory(product, quantity.orderQuantity);
-			
+				updateInventory(product, quantity.orderQuantity);			
 			});
 		}		
 	});
@@ -136,8 +125,7 @@ function orderPrompt(inventory)
 //=============================================================================
 
 function updateInventory(product, orderQuantity)
-{
-	
+{	
 	let newStockQuantity = product.stock_quantity - orderQuantity;
 
 	CONNECTION.query('UPDATE products set stock_quantity=? WHERE item_id=? ',[newStockQuantity,product.item_id], function (error, results, fields) {	
