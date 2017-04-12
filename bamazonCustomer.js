@@ -74,20 +74,23 @@ function orderPrompt(inventory)
 		let id = data.id;
 		let orderQuantity = parseInt(data.orderQuantity);	
 		
-		let itemobj = inventory.filter(e => e.item_id == id)[0]
-		//Assigns 'itemQuantity' the 'stock_quanity' of returned array from 'filter'
+		//'product' is row of product with 'item_id' of 'id' from 'products' table. 
+		//I get 'product' from the first element of returned array from 'filter'
 		// where item_id of object elements (e.item_id) equal 'id' for each 'inventory' element.
 		// Since 'item_id' is unique, returned array has only one element (hence [0]).
-		let itemQuantity = inventory.filter(e => e.item_id == id)[0].stock_quantity;  
+		let product = inventory.filter(e => e.item_id == id)[0]
+		
 
-		if(itemQuantity < orderQuantity)
+		let productQuantity = product.stock_quantity;  
+
+		if(productQuantity < orderQuantity)
 		{
 			console.log("Insufficient quantity!");
 			start();
 		}
 		else
 		{
-			updateInventory(id, itemQuantity, orderQuantity);
+			updateInventory(product, orderQuantity);
 		}	
 
 
@@ -95,16 +98,16 @@ function orderPrompt(inventory)
 }//END promptUser
 
 
-function updateInventory(itemId,itemQuantity, orderQuantity)
+function updateInventory(product, orderQuantity)
 {
 	
-	let newStockQuantity = itemQuantity - orderQuantity;
+	let newStockQuantity = product.stock_quantity - orderQuantity;
 
-	CONNECTION.query('UPDATE products set stock_quantity=? WHERE item_id=? ',[newStockQuantity,itemId], function (error, results, fields) {	
+	CONNECTION.query('UPDATE products set stock_quantity=? WHERE item_id=? ',[newStockQuantity,product.item_id], function (error, results, fields) {	
 		if (error) throw error;
 		
-		console.log("\nThank You For Your Order For " + orderQuantity + " " + itemobj.product_name + "." );
-		console.log("Total Price: $", itemobj.price * orderQuantity, "\n");
+		console.log("\nThank You For Your Order For " + orderQuantity + " " + product.product_name + "." );
+		console.log("Total Price: $", product.price * orderQuantity, "\n");
 		
 		INQUIRER.prompt([
 			{
@@ -130,11 +133,7 @@ function updateInventory(itemId,itemQuantity, orderQuantity)
 	});
 
 	
-
 }//END updateInventory
-
-
-
 
 
 CONNECTION.connect();
