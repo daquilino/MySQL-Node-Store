@@ -108,7 +108,7 @@ function updateInventory(product, orderQuantity)
 	CONNECTION.query('UPDATE products set stock_quantity=? WHERE item_id=? ',[newStockQuantity,product.item_id], function (error, results, fields) {	
 		if (error) throw error;
 		
-		console.log("\nThank You For Your Order For " + orderQuantity + " " + product.product_name + "." );
+		console.log("\nThank You For Your Order Of " + orderQuantity + " " + product.product_name + "(s)." );
 		console.log("Total Price: $", product.price * orderQuantity, "\n");
 		
 		INQUIRER.prompt([
