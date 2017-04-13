@@ -77,7 +77,7 @@ function orderPrompt(inventory)
 		let product = inventory.filter(e => e.item_id == id)[0]
 		
 		let productQuantity = product.stock_quantity;  
-
+console.log("productQuantity", productQuantity, typeof productQuantity);
 		if (productQuantity == 0)
 		{
 			console.log("\nSorry", product.product_name, "Is OUT OF STOCK.");
@@ -112,7 +112,7 @@ function orderPrompt(inventory)
 					message: "Please Enter Quantity:",
 					name: "orderQuantity",
 					filter: q => parseInt(q), 
-					validate: q => (q > 0 && q <= productQuantity) ?true : console.log("\n\nInsufficient quantity! Quantity must be 1 -" , productQuantity)
+					validate: q => (q > 0 && q <= productQuantity) ?true : console.log("\n\nSorry, Quantity Must Be Between 1 -" , productQuantity)
 				}
 				]).then(function(quantity){
 								
