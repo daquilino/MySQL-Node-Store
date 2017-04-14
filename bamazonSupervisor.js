@@ -57,25 +57,34 @@ function start()
 function displaySales()
 {
 
-	let query = 'SELECT * FROM products' ;
+	let query = "SELECT * FROM departments d, "
+	+ "(SELECT p.department_name, SUM(p.product_sales) AS total_sales FROM products p GROUP BY p.department_name) x "
+	+ "WHERE x.department_name = d.department_name";
 	
 	
 	CONNECTION.query(query, function (error, results, fields) {	
 		if (error) throw error;
 		
-		//Stores results ('products' table data)
+		//Stores results table
 		const SALES_TABLE = results;
 		
 		//Instantiates table using 'cli-table' package.
 		let table = new TABLE({
-    		head: ['Department Id', 'Department', 'Overhead Costs', 'Total Sales', 'Total Profit'],
- 			colWidths: [10, 20, 20, 10, 10]
+    		head: ['Dept. Id', 'Department', 'Overhead Costs', 'Total Sales', 'Total Profit'],
+ 			colWidths: [10, 20, 20, 15, 15]
  		});
 
 		//Pushes 'rows' to table
 		for(let key in SALES_TABLE)
 		{
-			table.push([SALES_TABLE[key].item_id, SALES_TABLE[key].product_name, "$" + SALES_TABLE[key].price, SALES_TABLE[key].stock_quantity ]);
+			let totalProfit = SALES_TABLE[key].total_sales - SALES_TABLE[key].over_head_costs;
+			table.push([
+				SALES_TABLE[key].department_id, 
+				SALES_TABLE[key].department_name, 
+				SALES_TABLE[key].over_head_costs, 
+				"$" + SALES_TABLE[key].total_sales, 
+				"$" + totalProfit
+			]);
 		}	
 
 		//Displays table in terminal
