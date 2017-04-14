@@ -131,9 +131,9 @@ function updateInventory(product, orderQuantity)
 	let totalPrice =  product.price * orderQuantity;
 
 	//Array of values to be updated in query.
-	let updateValues = [orerdQuantity, totalPrice, product.id];
+	let updateValues = [orderQuantity, totalPrice, product.item_id];
 
-	let query = 'UPDATE products SET stock_quantity=stock_quantity-? product_sales=product_sales+? WHERE item_id=?';
+	let query = 'UPDATE products SET stock_quantity=stock_quantity-?, product_sales=product_sales+? WHERE item_id=?';
 
 	CONNECTION.query(query, updateValues, function (error, results, fields) {	
 		if (error) throw error;
