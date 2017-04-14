@@ -26,8 +26,7 @@ function start()
 //=============================================================================
 
 function displayProducts()
-{
- 
+{ 
 	CONNECTION.query('SELECT * FROM products', function (error, results, fields) {	
 		if (error) throw error;
 		
@@ -77,7 +76,7 @@ function orderPrompt(inventory)
 		let product = inventory.filter(e => e.item_id == id)[0]
 		
 		let productQuantity = product.stock_quantity;  
-console.log("productQuantity", productQuantity, typeof productQuantity);
+
 		if (productQuantity == 0)
 		{
 			console.log("\nSorry", product.product_name, "Is OUT OF STOCK.");

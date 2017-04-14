@@ -20,11 +20,13 @@ const CONNECTION = MYSQL.createConnection({
 
 function start()
 {
+	console.log();//Adds new line
+	
 	INQUIRER.prompt([
 
 	{
 		type: 'list',
-		message: "Select An Option:",
+		message: "**MAIN MENU**",
 		choices: [	"View Products for Sale",
 	     			"View Low Inventory",
 	    			"Add to Inventory",
@@ -46,10 +48,10 @@ function start()
 				displayProducts("low");
 				break;	
 			case "Add to Inventory":
-				
+				updateQuantity();			
 				break;	
 			case "Add New Product":
-				
+				addNewProduct();
 				break;
 			case "Quit":
 				console.log("\nGOODBYE!");
@@ -61,37 +63,6 @@ function start()
 		}
 	});
 }//end start()
-
-
-//Don't need anymore
-// function quitPrompt()
-// {
-// 	INQUIRER.prompt([
-// 	{
-
-// 		type: "confirm",
-// 		message: "Would You Like To Select Another Option?",
-// 		name: "confirm"
-
-// 	}
-
-
-// 	]).then(function(res){
-
-// 		if (res.confirm)
-// 		{
-// 			start();
-
-// 		}	
-// 		else
-// 		{
-// 			console.log("\nGOODBYE!");
-// 			//CONNECTION.end();
-// 			return;
-// 		}	
-
-// 	}); 
-// }//END quitPrompt()
 
 
 
@@ -129,5 +100,153 @@ function displayProducts(type)
 		start();	 
 	});	
 }
+
+
+function addNewProduct()
+{
+	INQUIRER.prompt([
+
+		{
+			type: 'input',
+			message: "**ADD NEW PRODUCT** \nProduct Name:",
+			name: "product_name"
+		},
+		{
+			type: 'input',
+			message: "Department Name:",
+			name: "department_name"
+		},
+		{
+			type: 'input',
+			message: "Price:",
+			name: "price",
+			filter: e => parseFloat(e).toFixed(2),
+			validate: e => (e != NaN && e >= 0) ? true : console.log("\nPrice Must Be Number 0 Or More")
+		},
+		{
+			type: 'input',
+			message: "Quantity:",
+			name: "stock_quantity",
+			filter: e => parseInt(e),
+			validate: e => (e !== null && e >= 0) ? true : console.log("\nQuantity Must Be An Integer 0 Or More")
+		}
+
+	]).then(function(newProduct){
+
+		CONNECTION.query('INSERT products SET ?', newProduct, function (error, results, fields) {	
+		if (error) throw error;
+		
+			console.log("\nProduct Successfully Added.\n");
+
+
+			INQUIRER.prompt([
+			{	
+				type: 'list',
+				message: "What Would You Like To Do?",
+				choices: [	"Add Another Product To Inventory",
+	     					"Return To Main Menu",
+	    					"Quit"
+	    		 		 ],
+				name: "choice"
+			}	
+
+			]).then(function(res){
+
+				switch (res.choice)
+				{
+
+					case "Add Another Product To Inventory":
+						addNewProduct();
+						break;
+					case "Return To Main Menu":	
+						start();
+						break;
+					default:
+						console.log("\nGOODBYE!");
+						CONNECTION.end();
+						break;								
+				}
+
+			});	
+		 
+		});	
+
+	});
+
+
+}//END addInventory
+
+function updateQuantity()
+{
+	INQUIRER.prompt([
+
+		{
+			type: 'input',
+			message: "**ADD TO INVENTORY** \nProduct ID:",
+			name: "id",
+			filter: id => parseInt(id),
+			validate: id => (id > 0 && id != NaN) ? true : console.log("ID Must Be A Number > 0")
+		},
+		{
+			type: 'input',
+			message: "Additional Quantity",
+			name: "quantity",
+			filter: q => parseInt(q),
+			validate: q => (q > 0 && q != NaN) ? true : console.log("Quantity Must Be A Number > 0")
+		},
+
+	]).then(function(product){	
+
+		let update = [product.quantity, product.id];
+
+		CONNECTION.query('UPDATE products SET stock_quantity=stock_quantity+? WHERE item_id=?', update, function (error, results, fields) {	
+			if (error) throw error;
+		
+			console.log("\nProduct Quantity Successfully Added.\n");
+
+			INQUIRER.prompt([
+			{	
+				type: 'list',
+				message: "What Would You Like To Do?",
+				choices: [	"Add Another Product Inventory",
+	     					"Return To Main Menu",
+	    					"Quit"
+	    		 		 ],
+				name: "choice"
+			}	
+
+			]).then(function(res){
+
+				switch (res.choice)
+				{
+
+					case "Add Another Product Inventory":
+						updateQuantity();
+						break;
+					case "Return To Main Menu":	
+						start();
+						break;
+					default:
+						console.log("\nGOODBYE!");
+						CONNECTION.end();
+						break;								
+				}
+
+			});	
+
+
+
+		});	
+
+
+	});
+}//END updateQuantity()
+
+
+
+
+
+
+
 CONNECTION.connect();
 start();
