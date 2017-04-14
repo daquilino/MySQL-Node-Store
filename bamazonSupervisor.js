@@ -57,9 +57,9 @@ function start()
 function displaySales()
 {
 
-	let query = "SELECT d.department_id, d.department_name, d.over_head_costs, x.total_sales FROM departments d, "
-	+ "(SELECT p.department_name, SUM(p.product_sales) AS total_sales FROM products p GROUP BY p.department_name) x "
-	+ "WHERE x.department_name = d.department_name";
+	let query = "SELECT d.department_id, d.department_name, d.over_head_costs, x.total_sales FROM departments d "
+	+ "LEFT JOIN (SELECT p.department_name, SUM(p.product_sales) AS total_sales FROM products p GROUP BY p.department_name) x "
+	+ "ON x.department_name = d.department_name";
 	
 	
 	CONNECTION.query(query, function (error, results, fields) {	
