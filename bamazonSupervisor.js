@@ -27,7 +27,7 @@ function start()
 	INQUIRER.prompt([
 	{
 		type: 'list',
-		message: "**MAIN MENU**",
+		message: "**SUPERVISOR MENU**",
 		choices: [	"View Product Sales By Department",
 	     			"Create New Department"
 	    			"Quit"
@@ -48,7 +48,6 @@ function start()
 			case default:
 				console.log("\nGOODBYE!");
 				CONNECTION.end();
-				break;	
 		}
 	});
 }//end start()
@@ -84,7 +83,69 @@ function displaySales()
 
 		start();	 
 	});	
-}
+}//END displaySales()
+
+//===================================================================
+
+function addDepartment()
+{
+
+	console.log();//Adds new line
+
+	INQUIRER.prompt([
+
+		{
+			type: 'input',
+			message: "**CREATE NEW DEPARTMENT** \nDepartment Name:",
+			name: "department_name"
+		},
+		
+		{
+			type: 'input',
+			message: "Overhead Costs:",
+			name: "over_head_costs",
+			filter: e => parseFloat(e).toFixed(2),
+			validate: e => (e != NaN && e >= 0) ? true : console.log("\nOverhead Costs Must Be Number 0 Or More")
+		}
+
+	]).then(function(newProduct){
+
+		CONNECTION.query('INSERT departments SET ?', newProduct, function (error, results, fields) {	
+		if (error) throw error;
+		
+			console.log("\nDepartment Successfully Created.\n");
+
+			INQUIRER.prompt([
+			{	
+				type: 'list',
+				message: "What Would You Like To Do?",
+				choices: [	"Create Another Department",
+	     					"Return To Supervisor Menu",
+	    					"Quit"
+	    		 		 ],
+				name: "choice"
+			}	
+
+			]).then(function(res){
+
+				switch (res.choice)
+				{
+					case "Create Another Department":
+						addDepartment();
+						break;
+					case "Return To Supervisor Menu":	
+						start();
+						break;
+					default:
+						console.log("\nGOODBYE!");
+						CONNECTION.end();							
+				}
+			});			 
+		});	
+	});
+
+
+}//END addDepartment()
 
 
 
@@ -94,4 +155,3 @@ function displaySales()
 
 
 
-}
