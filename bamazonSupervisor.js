@@ -158,7 +158,6 @@ function addDepartment()
 
 
 CONNECTION.connect();
-
 start();
 
 

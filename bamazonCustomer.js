@@ -166,6 +166,5 @@ function updateInventory(product, orderQuantity)
 }//END updateInventory
 
 CONNECTION.connect();
-
 start();
 

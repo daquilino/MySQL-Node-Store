@@ -56,7 +56,7 @@ function start()
 			case "Add New Product":
 				addNewProduct();
 				break;
-			case default:
+			default:
 				console.log("\nGOODBYE!");
 				CONNECTION.end();	
 		}
