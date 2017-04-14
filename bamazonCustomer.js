@@ -126,12 +126,20 @@ function orderPrompt(inventory)
 function updateInventory(product, orderQuantity)
 {	
 	let newStockQuantity = product.stock_quantity - orderQuantity;
+	
+	//Total purchase price of product(s) ordered.
+	let totalPrice =  product.price * orderQuantity;
 
-	CONNECTION.query('UPDATE products set stock_quantity=? WHERE item_id=? ',[newStockQuantity,product.item_id], function (error, results, fields) {	
+	//Array of values to be updated in query.
+	let updateValues = [orerdQuantity, totalPrice, product.id];
+
+	let query = 'UPDATE products SET stock_quantity=stock_quantity-? product_sales=product_sales+? WHERE item_id=?';
+
+	CONNECTION.query(query, updateValues, function (error, results, fields) {	
 		if (error) throw error;
 		
 		console.log("\nThank You For Your Order Of " + orderQuantity + " " + product.product_name + "(s)." );
-		console.log("Total Price: $", product.price * orderQuantity, "\n");
+		console.log("Total Price: $", totalPrice, "\n");
 		
 		INQUIRER.prompt([
 			{

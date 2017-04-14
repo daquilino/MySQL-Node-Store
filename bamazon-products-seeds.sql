@@ -19,13 +19,13 @@ INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("ROBLOX", "video games", 15.99, 35);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Bowler Hat", "haberdashery", 25.99, 25);
+VALUES ("Bowler Hat", "Haberdashery", 25.99, 25);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Jelly Beans", "candy", 2.99, 93);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Death Ray", "Super Villian Weapons", 99999999.99 , 1);
+VALUES ("Death Ray", "Super Villian Weapons", 100000000.00 , 1);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Shrink Ray", "Super Villian Weapons", 689.99, 52);
