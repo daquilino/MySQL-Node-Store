@@ -29,7 +29,7 @@ function start()
 		type: 'list',
 		message: "**SUPERVISOR MENU**",
 		choices: [	"View Product Sales By Department",
-	     			"Create New Department"
+	     			"Create New Department",
 	    			"Quit"
 	    		 ],
 		name: "option"
