@@ -45,7 +45,7 @@ function start()
 			case "Create New Department":
 				addDepartment();
 				break;	
-			case default:
+			default:
 				console.log("\nGOODBYE!");
 				CONNECTION.end();
 		}
@@ -90,13 +90,13 @@ function displaySales()
 function addDepartment()
 {
 
-	console.log();//Adds new line
+	console.log("\n**CREATE NEW DEPARTMENT**");
 
 	INQUIRER.prompt([
 
 		{
 			type: 'input',
-			message: "**CREATE NEW DEPARTMENT** \nDepartment Name:",
+			message: "Department Name:",
 			name: "department_name"
 		},
 		
@@ -148,7 +148,9 @@ function addDepartment()
 }//END addDepartment()
 
 
+CONNECTION.connect();
 
+start();
 
 
 

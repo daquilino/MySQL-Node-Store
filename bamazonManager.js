@@ -104,13 +104,13 @@ function displayProducts(mode)
 
 function addNewProduct()
 {
-	console.log();//Adds new line
+	console.log("\nADD NEW PRODUCT");
 
 	INQUIRER.prompt([
 
 		{
 			type: 'input',
-			message: "**ADD NEW PRODUCT** \nProduct Name:",
+			message: "Product Name:",
 			name: "product_name"
 		},
 		{
@@ -175,13 +175,13 @@ function addNewProduct()
 
 function updateQuantity()
 {
-	console.log();//Adds new line
+	console.log("\n**ADD TO INVENTORY**");
 
 	INQUIRER.prompt([
 
 		{
 			type: 'input',
-			message: "**ADD TO INVENTORY** \nProduct ID:",
+			message: "Product ID:",
 			name: "id",
 			filter: id => parseInt(id),
 			validate: id => (id > 0 && id != NaN) ? true : console.log("ID Must Be A Number > 0")
