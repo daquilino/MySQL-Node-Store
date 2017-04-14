@@ -1,3 +1,8 @@
+//Douglas Aquilino   April 15, 2017	'bamazonManager.js' module
+//
+// This module contains a constructor function used to create a 'Basic Flashcard' object.
+
+
 //Dependencies
 const TABLE = require('cli-table');
 const INQUIRER = require('inquirer');
@@ -100,7 +105,6 @@ function displayProducts(mode)
 		start();	 
 	});	
 }
-
 
 function addNewProduct()
 {

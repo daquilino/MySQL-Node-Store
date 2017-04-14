@@ -1,3 +1,8 @@
+//Douglas Aquilino   April 15, 2017	'bamazonSupervisor.js' module
+//
+// This module contains a constructor function used to create a 'Basic Flashcard' object.
+
+
 //Dependencies
 const TABLE = require('cli-table');
 const INQUIRER = require('inquirer');
@@ -53,14 +58,13 @@ function start()
 }//end start()
 
 //===================================================================
-
+// Queries 'Bamazon_db'
 function displaySales()
 {
 
 	let query = "SELECT d.department_id, d.department_name, d.over_head_costs, x.total_sales FROM departments d "
 	+ "LEFT JOIN (SELECT p.department_name, SUM(p.product_sales) AS total_sales FROM products p GROUP BY p.department_name) x "
 	+ "ON x.department_name = d.department_name";
-	
 	
 	CONNECTION.query(query, function (error, results, fields) {	
 		if (error) throw error;

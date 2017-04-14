@@ -1,3 +1,7 @@
+//Douglas Aquilino   April 15, 2017	'bamazonCustomer.js' module
+//
+
+
 //Dependencies
 const TABLE = require('cli-table');
 const INQUIRER = require('inquirer');
@@ -123,18 +127,17 @@ function orderPrompt(inventory)
 
 //=============================================================================
 
+
 function updateInventory(product, orderQuantity)
 {	
-	let newStockQuantity = product.stock_quantity - orderQuantity;
+		
+	//Total purchase price of product(s) ordered formated to 2 decimal places.
+	let totalPrice =  (product.price * orderQuantity).toFixed(2);
+
+	let updateValues = [orderQuantity, totalPrice, totalPrice, product.item_id, product.department_name];
+
+	let query = 'UPDATE products p, departments d  SET p.stock_quantity=stock_quantity-?, p.product_sales=product_sales+?, d.total_sales=total_sales+? WHERE p.item_id=? AND d.department_name=?' ;
 	
-	//Total purchase price of product(s) ordered.
-	let totalPrice =  product.price * orderQuantity;
-
-	//Array of values to be updated in query.
-	let updateValues = [orderQuantity, totalPrice, product.item_id];
-
-	let query = 'UPDATE products SET stock_quantity=stock_quantity-?, product_sales=product_sales+? WHERE item_id=?';
-
 	CONNECTION.query(query, updateValues, function (error, results, fields) {	
 		if (error) throw error;
 		
@@ -164,6 +167,37 @@ function updateInventory(product, orderQuantity)
 	});
 	
 }//END updateInventory
+
+function updateTotalSales()
+{
+
+	let query = "SELECT p.department_name, SUM(p.product_sales) AS total_sales FROM products p GROUP BY p.department_name";
+
+	CONNECTION.query(query, function (error, results, fields) {	
+		if (error) throw error;
+
+		let query = "UPDATE departments "
+
+		CONNECTION.query(query, function (error, results, fields) {	
+		if (error) throw error;
+
+		
+
+
+
+
+
+	});	
+
+
+
+
+
+	});	
+
+}
+
+
 
 CONNECTION.connect();
 start();
