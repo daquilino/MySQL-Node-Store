@@ -56,13 +56,9 @@ function start()
 			case "Add New Product":
 				addNewProduct();
 				break;
-			case "Quit":
+			case default:
 				console.log("\nGOODBYE!");
-				CONNECTION.end();
-				break;		
-			default:
-				return;	
-
+				CONNECTION.end();	
 		}
 	});
 }//end start()
