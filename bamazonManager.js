@@ -1,8 +1,13 @@
+//Dependencies
 const TABLE = require('cli-table');
 const INQUIRER = require('inquirer');
 const MYSQL = require('mysql');
+
+	//module containting database password
 const PW = require('./pw.js');
 
+
+//MySQL Database connetion parameters
 const CONNECTION = MYSQL.createConnection({
 	host: "localhost",
 	port: 3306,
@@ -16,14 +21,13 @@ const CONNECTION = MYSQL.createConnection({
 });
 
 
-
+//===================================================================
 
 function start()
 {
 	console.log();//Adds new line
 	
 	INQUIRER.prompt([
-
 	{
 		type: 'list',
 		message: "**MAIN MENU**",
@@ -37,7 +41,6 @@ function start()
 	}
 
 	]).then(function(res){
-
 
 		switch (res.option)
 		{
@@ -64,13 +67,14 @@ function start()
 	});
 }//end start()
 
+//===================================================================
 
-
-function displayProducts(type)
+function displayProducts(mode)
 {
 	let query = 'SELECT * FROM products' ;
 	
-	if(type === "low")
+	// If 'mode' is low, sets query to only display products with low inventory
+	if(mode === "low")
 	{
 		query = 'SELECT * FROM products WHERE (stock_quantity < 5)';
 	}	
@@ -104,6 +108,8 @@ function displayProducts(type)
 
 function addNewProduct()
 {
+	console.log();//Adds new line
+
 	INQUIRER.prompt([
 
 		{
@@ -138,7 +144,6 @@ function addNewProduct()
 		
 			console.log("\nProduct Successfully Added.\n");
 
-
 			INQUIRER.prompt([
 			{	
 				type: 'list',
@@ -154,7 +159,6 @@ function addNewProduct()
 
 				switch (res.choice)
 				{
-
 					case "Add Another Product To Inventory":
 						addNewProduct();
 						break;
@@ -166,11 +170,8 @@ function addNewProduct()
 						CONNECTION.end();
 						break;								
 				}
-
-			});	
-		 
+			});			 
 		});	
-
 	});
 
 
@@ -178,6 +179,8 @@ function addNewProduct()
 
 function updateQuantity()
 {
+	console.log();//Adds new line
+
 	INQUIRER.prompt([
 
 		{
@@ -219,7 +222,6 @@ function updateQuantity()
 
 				switch (res.choice)
 				{
-
 					case "Add Another Product Inventory":
 						updateQuantity();
 						break;
@@ -231,22 +233,13 @@ function updateQuantity()
 						CONNECTION.end();
 						break;								
 				}
-
-			});	
-
-
-
-		});	
-
-
+			});
+		});
 	});
 }//END updateQuantity()
 
 
-
-
-
-
-
 CONNECTION.connect();
 start();
+
+

@@ -70,7 +70,7 @@ function orderPrompt(inventory)
 		let id = data.id;
 			
 		//'product' is row of product with 'item_id' of 'id' from 'products' table. 
-		//I get 'product' from the first element of returned array from 'filter'
+		// I get 'product' from the first element of returned array from 'filter'
 		// where item_id of object elements (e.item_id) equal 'id' for each 'inventory' element.
 		// Since 'item_id' is unique, returned array has only one element (hence [0]).
 		let product = inventory.filter(e => e.item_id == id)[0]
