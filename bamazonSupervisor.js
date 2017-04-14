@@ -57,7 +57,7 @@ function start()
 function displaySales()
 {
 
-	let query = "SELECT * FROM departments d, "
+	let query = "SELECT d.department_id, d.department_name, d.over_head_costs, x.total_sales FROM departments d, "
 	+ "(SELECT p.department_name, SUM(p.product_sales) AS total_sales FROM products p GROUP BY p.department_name) x "
 	+ "WHERE x.department_name = d.department_name";
 	
@@ -70,18 +70,26 @@ function displaySales()
 		
 		//Instantiates table using 'cli-table' package.
 		let table = new TABLE({
-    		head: ['Dept. Id', 'Department', 'Overhead Costs', 'Total Sales', 'Total Profit'],
- 			colWidths: [10, 20, 20, 15, 15]
+    		head: ['Id', 'Department', 'Overhead Costs', 'Total Sales', 'Total Profit'],
+ 			colWidths: [5, 25, 16, 14, 15]
  		});
 
 		//Pushes 'rows' to table
 		for(let key in SALES_TABLE)
 		{
+			//If department is add to 'departments' table but no product for that department in 'products' table,
+			// total_sales will be null. This checks and sets total_sales to zero if it is null.
+			if(SALES_TABLE[key].total_sales === null)
+			{
+				SALES_TABLE[key].total_sales = 0;
+			}
+
 			let totalProfit = SALES_TABLE[key].total_sales - SALES_TABLE[key].over_head_costs;
+			
 			table.push([
 				SALES_TABLE[key].department_id, 
 				SALES_TABLE[key].department_name, 
-				SALES_TABLE[key].over_head_costs, 
+				"$" + SALES_TABLE[key].over_head_costs, 
 				"$" + SALES_TABLE[key].total_sales, 
 				"$" + totalProfit
 			]);
