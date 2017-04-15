@@ -62,9 +62,7 @@ function start()
 function displaySales()
 {
 
-	let query = "SELECT d.department_id, d.department_name, d.over_head_costs, x.total_sales FROM departments d "
-	+ "LEFT JOIN (SELECT p.department_name, SUM(p.product_sales) AS total_sales FROM products p GROUP BY p.department_name) x "
-	+ "ON x.department_name = d.department_name";
+	let query = "SELECT * FROM departments";
 	
 	CONNECTION.query(query, function (error, results, fields) {	
 		if (error) throw error;
@@ -88,13 +86,13 @@ function displaySales()
 				SALES_TABLE[key].total_sales = 0;
 			}
 
-			let totalProfit = SALES_TABLE[key].total_sales - SALES_TABLE[key].over_head_costs;
+			let totalProfit = (SALES_TABLE[key].total_sales - SALES_TABLE[key].over_head_costs).toFixed(2);
 			
 			table.push([
 				SALES_TABLE[key].department_id, 
 				SALES_TABLE[key].department_name, 
-				"$" + SALES_TABLE[key].over_head_costs, 
-				"$" + SALES_TABLE[key].total_sales, 
+				"$" + SALES_TABLE[key].over_head_costs.toFixed(2), 
+				"$" + SALES_TABLE[key].total_sales.toFixed(2), 
 				"$" + totalProfit
 			]);
 		}	
