@@ -44,45 +44,29 @@ $ npm install
 ## Usage
 #### bamazonCustomer.js
 
-*  The 'BasicCard' constructor simply has two parameters, 'front' and 'back', which each get assigned to respective properties 'front' and 'back'.
+*  what it does/ menu options what eatch do/ link to video
 
-`Creating a BasicCard object (flashcard)`
+
  
-```javascript
-const BASIC = require('./basic-flashcard.js')
-	
-***
-	
-let card1 = new BASIC.BasicCard("Who was the first president of the United States?", "George Washington");
 
-console.log(card1);
-
-// BasicCard {
-//	front: 'Who was the first president of the United States?',
-//	back: 'George Washington' }
-
-```
  #### bamazonManager.js - each menu
 
+*  what it does/ menu options what eatch do/ link to video
 
-*  The 'ClozeCard' constructor has two properties, 'fullText' and 'clozeDeletion'. The two get assigned from their respective parameters 'fullText' and 'clozeDeletion'. Both parameters are strings with 'clozeDeletion' accepting multiple terms in ONE string seperated by commas (example "red, blue").    
 
-* each 
 
-`Creating a ClozeCard object (flashcard)`
- 
-```javascript
-const CLOZE  = require('./clozeCard.js');
-	
-***
 
-commands here
 
-```
+#### bamazonSupervisor.js - each menu
+
+*  what it does/ menu options what eatch do/ link to video
+
      
 ## Built With
 
 * [Sublime Text](https://www.sublimetext.com/) - Text Editor.
+* [Node.js](https://nodejs.org) - JavaScript runtime built on Chrome's V8 JavaScript engine.
+* [MySQL](https://www.mysql.com/) - Open Source SQL Database.
 
 ###### NPM Packages
 
