@@ -43,7 +43,7 @@ $ npm install
 *  what it does/ menu options what eatch do/ link to video
 
 
-<img src="/images/customer.png" alt="bamazonCustomer screenshot">
+<img src="/images/customer.png" alt="bamazonCustomer screenshot" width="640">
 
  
  [Click here See A Demo Of bamazonCustomer.js On Youtube](https://www.youtube.com/watch?v=aYcN7VBt1L0)
@@ -64,7 +64,7 @@ $ npm install
 *  what it does/ menu options what eatch do/ link to video
 
 
-<img src="/images/supervisor.png" alt="bamazonSupervisor screenshot">
+<img src="/images/supervisor.png" alt="bamazonSupervisor screenshot" width="640">
 
 [Click here See A Demo Of bamazonSupervisor.js On Youtube](https://www.youtube.com/watch?v=UW71qn9o-Qo)
 
