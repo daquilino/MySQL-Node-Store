@@ -47,25 +47,29 @@ $ npm install
 *  what it does/ menu options what eatch do/ link to video
 
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=aYcN7VBt1L0"
+ target="_blank"><img src="http://img.youtube.com/vi/aYcN7VBt1L0/0.jpg" 
+ alt="bamazonCustomer video" width="480" height="360" border="10" /></a>
+
+
  [Click here See A Demo Of bamazonCustomer.js On Youtube]
 
  #### bamazonManager.js
 
 *  what it does/ menu options what eatch do/ link to video
 
-<a href="https://www.youtube.com/embed/aYcN7VBt1L0" target="_blank">
-<img src="https://www.youtube.com/embed/aYcN7VBt1L0/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
-
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=aYcN7VBt1L0"
- target="_blank"><img src="http://img.youtube.com/vi/aYcN7VBt1L0/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=8DppxLZ7bqE"
+ target="_blank"><img src="http://img.youtube.com/vi/8DppxLZ7bqE/0.jpg" 
+ alt="bamazonManager video" width="480" height="360" border="10" /></a>
 
 #### bamazonSupervisor.js
 
 *  what it does/ menu options what eatch do/ link to video
 
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=UW71qn9o-Qo"
+ target="_blank"><img src="http://img.youtube.com/vi/UW71qn9o-Qo/0.jpg" 
+ alt="bamazonSupervisor video" width="480" height="360" border="10" /></a>
      
 ## Built With
 
