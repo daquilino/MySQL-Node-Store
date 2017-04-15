@@ -47,17 +47,19 @@ $ npm install
 *  what it does/ menu options what eatch do/ link to video
 
 
- 
+ [Click here See A Demo Of bamazonCustomer.js On Youtube]
 
- #### bamazonManager.js - each menu
+ #### bamazonManager.js
 
 *  what it does/ menu options what eatch do/ link to video
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
+" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 
 
-
-#### bamazonSupervisor.js - each menu
+#### bamazonSupervisor.js
 
 *  what it does/ menu options what eatch do/ link to video
 
