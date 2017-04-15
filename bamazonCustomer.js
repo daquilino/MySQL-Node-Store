@@ -22,7 +22,7 @@ const CONNECTION = MYSQL.createConnection({
 
 //=============================================================================
 //Initiates Module
-function start(CONNECTION)
+function start()
 {
 	CONNECTION.connect();
 	displayProducts();	
@@ -156,7 +156,7 @@ function updateInventory(product, orderQuantity)
 
 			if(answer.confirm)
 			{
-				displayProducts();();
+				displayProducts();
 			}
 			else
 			{ 

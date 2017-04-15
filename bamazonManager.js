@@ -36,7 +36,7 @@ function start()
 
 //===================================================================
 
-funtion mainMenu()
+function mainMenu()
 {
 	console.log();//Adds new line
 	
