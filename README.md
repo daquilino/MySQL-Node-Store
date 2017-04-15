@@ -40,8 +40,13 @@ $ npm install
 ## Usage
 #### bamazonCustomer.js
 
-*  what it does/ menu options what eatch do/ link to video
+* Displays a table of products with product's ids, names, and prices availible for purchase to console. Then prompts user to ender the ID of the product they would like to purchase followed a prompt for quantity.
 
+* The user's total purchase is then calculated and displayed to the console.
+
+* Then the following is updated in the database using MySQL.
+	* In the products table the product's stock_quantity and product_sales based on product's item_id.
+	* In the departments table total_sales based on product's department_name. 
 
 <img src="/images/customer.png" alt="bamazonCustomer screenshot" width="640">
 
