@@ -48,10 +48,10 @@ $ npm install
 
 *  what it does/ menu options what eatch do/ link to video
 
-
+<div style="border: 5px solid red">
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=aYcN7VBt1L0"
  target="_blank"><img src="http://img.youtube.com/vi/aYcN7VBt1L0/0.jpg" 
- alt="bamazonCustomer video" width="480" height="360" border="10" /></a>
+ alt="bamazonCustomer video" width="480" height="360" border="10" /></a></div>
  
  [Click here See A Demo Of bamazonCustomer.js On Youtube]
 
