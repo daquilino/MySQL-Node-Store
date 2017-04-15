@@ -1,12 +1,6 @@
 # MySQL-Node-Store (a.k.a. Bamazon)
 	
-, bamazonCustomer.js, bamazonManager.js, and bamazonSupervisor.js that allows users to create ...  
-
-MySQL-Node-Store (a.k.a. Bamazon) is an Node.js based Amazon-like storefront utilizng MySQL. The app is broken down into three modes for customers, managers, and supervisors.  
-
-takes in orders from customers and depletes stock from the store's inventory. As a bonus task, you can program your app to track product sales across your store's departments and then provide a summary of the highest-grossing departments in the store.
-
- 
+MySQL-Node-Store (a.k.a. Bamazon) is an Node.js based Amazon-like storefront utilizng MySQL. The app is broken down into three modes for customers, managers, and supervisors.  The modes are each conatained in their respective modules bamazonCustomer.js, bamazonManager.js, and bamazonSupervisor.js. See 'Usage' below for details of each. 
 
 	
 ## Getting Started
@@ -78,9 +72,6 @@ $ npm install
  alt="bamazonSupervisor video" width="480" height="360" border="10" /></a>
 
 [Click here See A Demo Of bamazonSupervisor.js On Youtube](https://www.youtube.com/watch?v=UW71qn9o-Qo)
-
-
-
 
 
 ## Built With
