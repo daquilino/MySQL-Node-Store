@@ -1,6 +1,6 @@
 //Douglas Aquilino   April 15, 2017	'bamazonManager.js' module
 //
-// This module contains a constructor function used to create a 'Basic Flashcard' object.
+// 
 
 
 //Dependencies
@@ -8,9 +8,8 @@ const TABLE = require('cli-table');
 const INQUIRER = require('inquirer');
 const MYSQL = require('mysql');
 
-	//module containting database password
+//module containting database password
 const PW = require('./pw.js');
-
 
 //MySQL Database connetion parameters
 const CONNECTION = MYSQL.createConnection({
@@ -36,6 +35,7 @@ function start()
 
 //===================================================================
 
+//Displays and 'routes' manager options.
 function mainMenu()
 {
 	console.log();//Adds new line
@@ -80,6 +80,10 @@ function mainMenu()
 
 //===================================================================
 
+// Queries 'Bamazon_db' depending on value of parameter 'mode'.
+// If mode = 'all', only data with stock_quantity less than 5 if queried.
+// Other wise all data is queried from products table.
+// Formats and displays data in table to console using 'cli-tables' module.
 function displayProducts(mode)
 {
 	let query = 'SELECT * FROM products' ;
@@ -89,7 +93,6 @@ function displayProducts(mode)
 	{
 		query = 'SELECT * FROM products WHERE (stock_quantity < 5)';
 	}	
-
 
 	CONNECTION.query(query, function (error, results, fields) {	
 		if (error) throw error;
@@ -118,6 +121,9 @@ function displayProducts(mode)
 
 //===================================================================
 
+//Prompts the user for new product data to be added to products table.
+//Inserts that data into 'products' table us 'mysql' module.
+//Prompts user on option what they would like to do next.
 function addNewProduct()
 {
 	console.log("\nADD NEW PRODUCT");
@@ -151,6 +157,9 @@ function addNewProduct()
 
 	]).then(function(newProduct){
 
+
+		// Inserts newProduct object into table where object properties and values, correspond to
+		// tables column names and values.
 		CONNECTION.query('INSERT products SET ?', newProduct, function (error, results, fields) {	
 		if (error) throw error;
 		
@@ -192,6 +201,9 @@ function addNewProduct()
 
 //===================================================================
 
+//Prompts the user to add to quantity of product.
+//Updates that product in 'products' table us 'mysql' module.
+//Prompts user on option what they would like to do next.
 function updateQuantity()
 {
 	console.log("\n**ADD TO INVENTORY**");
@@ -215,6 +227,7 @@ function updateQuantity()
 
 	]).then(function(product){	
 
+		// Data values provided by user used to update. 
 		let update = [product.quantity, product.id];
 
 		CONNECTION.query('UPDATE products SET stock_quantity=stock_quantity+? WHERE item_id=?', update, function (error, results, fields) {	
@@ -254,8 +267,7 @@ function updateQuantity()
 }//END updateQuantity()
 
 
-//This starts the module if running by by itself.
-// If used as dependency from another module remove this line.
-//start();
+//Initiates App
+start();
 
 

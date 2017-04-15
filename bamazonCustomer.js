@@ -22,6 +22,7 @@ const CONNECTION = MYSQL.createConnection({
 
 //=============================================================================
 //Initiates Module
+
 function start()
 {
 	CONNECTION.connect();
@@ -30,6 +31,8 @@ function start()
 
 //=============================================================================
 
+// Queries 'Bamazon_db' for all data in 'departments' table.
+// Then displays order prompt by calling orderPrompt().
 function displayProducts()
 { 
 	CONNECTION.query('SELECT * FROM products', function (error, results, fields) {	
@@ -47,7 +50,7 @@ function displayProducts()
 		//Pushes 'rows' to table
 		for(let key in INVENTORY)
 		{
-			table.push([INVENTORY[key].item_id, INVENTORY[key].product_name, "$" + INVENTORY[key].price ]);
+			table.push([INVENTORY[key].item_id, INVENTORY[key].product_name, "$" + INVENTORY[key].price.toFixed(2)]);
 		}	
 
 		//Displays table in terminal
@@ -59,6 +62,8 @@ function displayProducts()
 
 //=============================================================================
 
+//Displays order prompt to user so they can place an order.
+//Calls updateInventory() with arguments from users order.
 function orderPrompt(inventory)
 {	
 	INQUIRER.prompt([
@@ -109,8 +114,7 @@ function orderPrompt(inventory)
 		}			
 		else
 		{	
-			INQUIRER.prompt([
-			
+			INQUIRER.prompt([			
 				{
 					type: "input",
 					message: "Please Enter Quantity:",
@@ -119,7 +123,7 @@ function orderPrompt(inventory)
 					validate: q => (q > 0 && q <= productQuantity) ?true : console.log("\n\nSorry, Quantity Must Be Between 1 -" , productQuantity)
 				}
 				]).then(function(quantity){
-								
+
 					updateInventory(product, quantity.orderQuantity);			
 				});
 		}		
@@ -128,16 +132,20 @@ function orderPrompt(inventory)
 
 //=============================================================================
 
-
+//Calculates total price of order, displaying it to user.
+//Updates product table of product's stock_quantity and product_sales 
+//based on product's item_id.
+//Updates department table total_sales based on products department_name 
 function updateInventory(product, orderQuantity)
-{	
-		
+{		
 	//Total purchase price of product(s) ordered formated to 2 decimal places.
 	let totalPrice =  (product.price * orderQuantity).toFixed(2);
 
+	// array of values to use in update query.
 	let updateValues = [orderQuantity, totalPrice, totalPrice, product.item_id, product.department_name];
 
-	let query = 'UPDATE products p, departments d  SET p.stock_quantity=stock_quantity-?, p.product_sales=product_sales+?, d.total_sales=total_sales+? WHERE p.item_id=? AND d.department_name=?' ;
+	let query = 'UPDATE products p, departments d  SET p.stock_quantity=stock_quantity-?, p.product_sales=product_sales+?,'
+	+ ' d.total_sales=total_sales+? WHERE p.item_id=? AND d.department_name=?' ;
 	
 	CONNECTION.query(query, updateValues, function (error, results, fields) {	
 		if (error) throw error;
@@ -169,8 +177,6 @@ function updateInventory(product, orderQuantity)
 	
 }//END updateInventory
 
-
-//This starts the module if running by by itself.
-// If used as dependency from another module remove this line.
+//Initiates App
 start();
 

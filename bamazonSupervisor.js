@@ -27,15 +27,18 @@ const CONNECTION = MYSQL.createConnection({
 
 //===================================================================
 
-//Initiates Module
-
+//Opens connection to database, calls supervisorMenu()
 function start()
 {
 	CONNECTION.connect();
 	supervisorMenu();
 }//end start()
 
+
+
 //===================================================================
+
+//Displays and 'routes' supervisor options.
 function supervisorMenu()
 {
 	console.log();//Adds new line
@@ -71,7 +74,8 @@ function supervisorMenu()
 
 //===================================================================
 
-// Queries 'Bamazon_db'
+// Queries 'Bamazon_db' for all data in 'departments' table.
+// Formats and displays data in table to console using 'cli-tables' module.
 function displaySales()
 {
 	let query = "SELECT * FROM departments";
@@ -118,6 +122,9 @@ function displaySales()
 
 //===================================================================
 
+//Prompts the user for department name and overhead costs to add.
+//Inserts that data into 'deparments' table us 'mysql' module.
+//Prompts user on option what they would like to do next.
 function addDepartment()
 {
 	console.log("\n**CREATE NEW DEPARTMENT**");
@@ -172,13 +179,11 @@ function addDepartment()
 			});			 
 		});	
 	});
-
 }//END addDepartment()
 
 
-//This starts the module if running by by itself.
-// If used as dependency from another module remove this line.
-//start();
+//Initiates App
+start();
 
 
 
