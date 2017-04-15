@@ -58,6 +58,10 @@ $ npm install
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=aYcN7VBt1L0"
+ target="_blank"><img src="http://img.youtube.com/vi/aYcN7VBt1L0/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
 #### bamazonSupervisor.js
 
 *  what it does/ menu options what eatch do/ link to video
