@@ -21,7 +21,7 @@ const CONNECTION = MYSQL.createConnection({
 });
 
 //=============================================================================
-
+//Initiates Module
 function start(CONNECTION)
 {
 	CONNECTION.connect();
@@ -156,7 +156,7 @@ function updateInventory(product, orderQuantity)
 
 			if(answer.confirm)
 			{
-				start();
+				displayProducts();();
 			}
 			else
 			{ 
@@ -170,6 +170,7 @@ function updateInventory(product, orderQuantity)
 }//END updateInventory
 
 
-
+//This starts the module if running by by itself.
+// If used as dependency from another module remove this line.
 start();
 

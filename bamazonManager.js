@@ -27,8 +27,16 @@ const CONNECTION = MYSQL.createConnection({
 
 
 //===================================================================
-
+//Initiates Module
 function start()
+{
+	CONNECTION.connect();
+	mainMenu();
+}//end start()
+
+//===================================================================
+
+funtion mainMenu()
 {
 	console.log();//Adds new line
 	
@@ -66,7 +74,9 @@ function start()
 				CONNECTION.end();	
 		}
 	});
-}//end start()
+
+}//END mainMenu()
+
 
 //===================================================================
 
@@ -102,9 +112,11 @@ function displayProducts(mode)
 		//Displays table in terminal
 		console.log(table.toString());
 
-		start();	 
+		mainMenu();	 
 	});	
 }
+
+//===================================================================
 
 function addNewProduct()
 {
@@ -163,7 +175,7 @@ function addNewProduct()
 						addNewProduct();
 						break;
 					case "Return To Main Menu":	
-						start();
+						mainMenu();
 						break;
 					default:
 						console.log("\nGOODBYE!");
@@ -176,6 +188,9 @@ function addNewProduct()
 
 
 }//END addInventory
+
+
+//===================================================================
 
 function updateQuantity()
 {
@@ -226,7 +241,7 @@ function updateQuantity()
 						updateQuantity();
 						break;
 					case "Return To Main Menu":	
-						start();
+						mainMenu();
 						break;
 					default:
 						console.log("\nGOODBYE!");
@@ -239,7 +254,8 @@ function updateQuantity()
 }//END updateQuantity()
 
 
-CONNECTION.connect();
+//This starts the module if running by by itself.
+// If used as dependency from another module remove this line.
 start();
 
 

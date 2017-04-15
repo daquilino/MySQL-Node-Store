@@ -25,43 +25,55 @@ const CONNECTION = MYSQL.createConnection({
 	database: 'Bamazon_db'
 });
 
+//===================================================================
+
+//Initiates Module
+
 function start()
 {
-	console.log();//Adds new line
-	
-	INQUIRER.prompt([
-	{
-		type: 'list',
-		message: "**SUPERVISOR MENU**",
-		choices: [	"View Product Sales By Department",
-	     			"Create New Department",
-	    			"Quit"
-	    		 ],
-		name: "option"
-	}
-
-	]).then(function(res){
-
-		switch (res.option)
-		{
-			case "View Product Sales By Department":
-				displaySales();
-				break;
-			case "Create New Department":
-				addDepartment();
-				break;	
-			default:
-				console.log("\nGOODBYE!");
-				CONNECTION.end();
-		}
-	});
+	CONNECTION.connect();
+	supervisorMenu();
 }//end start()
 
 //===================================================================
+function supervisorMenu()
+{
+	console.log();//Adds new line
+		
+		INQUIRER.prompt([
+		{
+			type: 'list',
+			message: "**SUPERVISOR MENU**",
+			choices: [	"View Product Sales By Department",
+		     			"Create New Department",
+		    			"Quit"
+		    		 ],
+			name: "option"
+		}
+
+		]).then(function(res){
+
+			switch (res.option)
+			{
+				case "View Product Sales By Department":
+					displaySales();
+					break;
+				case "Create New Department":
+					addDepartment();
+					break;	
+				default:
+					console.log("\nGOODBYE!");
+					CONNECTION.end();
+			}
+		});
+}//END supervisorMenu()
+
+
+//===================================================================
+
 // Queries 'Bamazon_db'
 function displaySales()
 {
-
 	let query = "SELECT * FROM departments";
 	
 	CONNECTION.query(query, function (error, results, fields) {	
@@ -100,7 +112,7 @@ function displaySales()
 		//Displays table in terminal
 		console.log(table.toString());
 
-		start();	 
+		supervisorMenu();	 
 	});	
 }//END displaySales()
 
@@ -108,7 +120,6 @@ function displaySales()
 
 function addDepartment()
 {
-
 	console.log("\n**CREATE NEW DEPARTMENT**");
 
 	INQUIRER.prompt([
@@ -117,8 +128,7 @@ function addDepartment()
 			type: 'input',
 			message: "Department Name:",
 			name: "department_name"
-		},
-		
+		},		
 		{
 			type: 'input',
 			message: "Overhead Costs:",
@@ -153,7 +163,7 @@ function addDepartment()
 						addDepartment();
 						break;
 					case "Return To Supervisor Menu":	
-						start();
+						supervisorMenu();
 						break;
 					default:
 						console.log("\nGOODBYE!");
@@ -163,11 +173,11 @@ function addDepartment()
 		});	
 	});
 
-
 }//END addDepartment()
 
 
-CONNECTION.connect();
+//This starts the module if running by by itself.
+// If used as dependency from another module remove this line.
 start();
 
 
