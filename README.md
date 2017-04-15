@@ -19,12 +19,15 @@ MySQL-Node-Store contains three modules, bamazonCustomer.js, bamazonManager.js, 
 
 1. Download and install Node.js (if not installed already). 
 [Node.js Download Page](https://nodejs.org/en/download/)
-2. Using MySQL Workbench/Community Server create 'Bamazon_db' database 
+
+2. Using [MySQL](https://www.mysql.com/) Workbench/Community Server  create 'Bamazon_db' database 
 and 'products' and 'departments' tables. 
 You can use the following schema/seeds files in this repository:
-	*`bamazon-schema.sql`
-	*`bamazon-departments-seeds.sql`
-	*`bamazon-product-seeds`
+	
+	* `bamazon-schema.sql`
+	* `bamazon-departments-seeds.sql`
+	* `bamazon-product-seeds`
+
 3. Clone MySQL-Node-Store repository. 
 
 ```
