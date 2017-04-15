@@ -1,6 +1,6 @@
 //Douglas Aquilino   April 15, 2017	'bamazonSupervisor.js' module
-//
-// This module contains a constructor function used to create a 'Basic Flashcard' object.
+//For Usage Visit 
+//https://github.com/daquilino/MySQL-Node-Store/blob/master/README.md
 
 
 //Dependencies

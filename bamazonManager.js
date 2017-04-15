@@ -1,6 +1,6 @@
 //Douglas Aquilino   April 15, 2017	'bamazonManager.js' module
-//
-// 
+//For Usage Visit 
+//https://github.com/daquilino/MySQL-Node-Store/blob/master/README.md
 
 
 //Dependencies
