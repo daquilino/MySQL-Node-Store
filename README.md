@@ -43,7 +43,7 @@ $ npm install
 *  what it does/ menu options what eatch do/ link to video
 
 
-<img src="/images/customer.png" alt="bamazonCustomer sreenshot">
+<img src="/images/customer.png" alt="bamazonCustomer screenshot">
 
  
  [Click here See A Demo Of bamazonCustomer.js On Youtube](https://www.youtube.com/watch?v=aYcN7VBt1L0)
@@ -54,9 +54,7 @@ $ npm install
 
 *  what it does/ menu options what eatch do/ link to video
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=8DppxLZ7bqE"
- target="_blank"><img src="http://img.youtube.com/vi/8DppxLZ7bqE/0.jpg" 
- alt="bamazonManager video" width="480" height="360" border="10" /></a>
+<img src="/images/manager.png" alt="bamazonManager screenshot">
 
 [Click here See A Demo Of bamazonManager.js On Youtube](https://www.youtube.com/watch?v=8DppxLZ7bqE)
 
@@ -66,9 +64,7 @@ $ npm install
 *  what it does/ menu options what eatch do/ link to video
 
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=UW71qn9o-Qo"
- target="_blank"><img src="http://img.youtube.com/vi/UW71qn9o-Qo/0.jpg" 
- alt="bamazonSupervisor video" width="480" height="360" border="10" /></a>
+<img src="/images/supervisor.png" alt="bamazonSupervisor screenshot">
 
 [Click here See A Demo Of bamazonSupervisor.js On Youtube](https://www.youtube.com/watch?v=UW71qn9o-Qo)
 
