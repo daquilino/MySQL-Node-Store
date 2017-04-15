@@ -53,8 +53,9 @@ $ npm install
 
 *  what it does/ menu options what eatch do/ link to video
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aYcN7VBt1L0" frameborder="0" allowfullscreen></iframe>
-
+<a href="https://www.youtube.com/embed/aYcN7VBt1L0" target="_blank">
+<img src="https://www.youtube.com/embed/aYcN7VBt1L0/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 
 #### bamazonSupervisor.js
