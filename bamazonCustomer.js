@@ -22,8 +22,9 @@ const CONNECTION = MYSQL.createConnection({
 
 //=============================================================================
 
-function start()
+function start(CONNECTION)
 {
+	CONNECTION.connect();
 	displayProducts();	
 }
 
@@ -168,37 +169,7 @@ function updateInventory(product, orderQuantity)
 	
 }//END updateInventory
 
-function updateTotalSales()
-{
-
-	let query = "SELECT p.department_name, SUM(p.product_sales) AS total_sales FROM products p GROUP BY p.department_name";
-
-	CONNECTION.query(query, function (error, results, fields) {	
-		if (error) throw error;
-
-		let query = "UPDATE departments "
-
-		CONNECTION.query(query, function (error, results, fields) {	
-		if (error) throw error;
-
-		
 
 
-
-
-
-	});	
-
-
-
-
-
-	});	
-
-}
-
-
-
-CONNECTION.connect();
 start();
 
