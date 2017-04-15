@@ -256,6 +256,6 @@ function updateQuantity()
 
 //This starts the module if running by by itself.
 // If used as dependency from another module remove this line.
-start();
+//start();
 
 

@@ -8,7 +8,7 @@ const TABLE = require('cli-table');
 const INQUIRER = require('inquirer');
 const MYSQL = require('mysql');
 
-	//module containting database password
+//gets password from module
 const PW = require('./pw.js');
 
 
@@ -178,7 +178,7 @@ function addDepartment()
 
 //This starts the module if running by by itself.
 // If used as dependency from another module remove this line.
-start();
+//start();
 
 
 
