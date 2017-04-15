@@ -63,7 +63,7 @@ $ npm install
  target="_blank"><img src="http://img.youtube.com/vi/8DppxLZ7bqE/0.jpg" 
  alt="bamazonManager video" width="480" height="360" border="10" /></a>
 
-[Click here See A Demo Of bamazonManager.js On Youtube]
+<figcaption>[Click here See A Demo Of bamazonManager.js On Youtube]</figcaption>
 
 
 #### bamazonSupervisor.js
