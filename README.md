@@ -54,7 +54,7 @@ $ npm install
 
 *  what it does/ menu options what eatch do/ link to video
 
-<img src="/images/manager.png" alt="bamazonManager screenshot">
+<img src="/images/manager.png" alt="bamazonManager screenshot" width="640">
 
 [Click here See A Demo Of bamazonManager.js On Youtube](https://www.youtube.com/watch?v=8DppxLZ7bqE)
 
