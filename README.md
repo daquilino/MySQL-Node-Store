@@ -63,9 +63,9 @@ $ npm install
 
 	* `View Low Inventory` - Displays a table to the console of all product who's quantity is less than 5.
 
-	* `Add to Inventory` - Allows the manager to add to any products quantity which is updated to the database using MySQL.
-	
-	* `Add New Product` -  Allow the manager to add a new product which is updated to the database using MySQL.
+	* `Add to Inventory` - Allows the manager to add to a product's quantity which is updated to the database using MySQL.
+
+	* `Add New Product` -  Allow the manager to add a new product which is inserted to the database using MySQL.
 
 <img src="/images/manager.png" alt="bamazonManager screenshot" width="640">
 
@@ -76,8 +76,9 @@ $ npm install
 
 *  Displays the 'Supervisors Menu' on the console with the following options:
 	
-	* `View Products Sales By Department`
-	* `Create New Department`
+	* `View Products Sales By Department` - Displays a table of departments to the console showing department's id, name, overhead costs, total sales, and total profits. 
+
+	* `Create New Department` - Allows the supervisor to create a new department which is inserted into the 'departments' table in the database using MySQL. 
 	
 
 
