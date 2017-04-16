@@ -57,11 +57,12 @@ $ npm install
 
  #### bamazonManager.js
 
-*  
-	*`View Products for Sale`
-	*`View Low Inventory`
-	*`Add to Inventory`
-	*`Add New Product`
+*  Displays the 'Manager Menu' on the console with the following options:
+	
+	* `View Products for Sale` - something
+	* `View Low Inventory`
+	* `Add to Inventory`
+	* `Add New Product`
 
 <img src="/images/manager.png" alt="bamazonManager screenshot" width="640">
 
@@ -71,8 +72,9 @@ $ npm install
 #### bamazonSupervisor.js
 
 *  Displays the 'Supervisors Menu' on the console with the following options:
-	*`View Products Sales By Department`
-	*`Create New Department`
+	
+	* `View Products Sales By Department`
+	* `Create New Department`
 	
 
 
