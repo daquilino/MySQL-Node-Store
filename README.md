@@ -57,7 +57,11 @@ $ npm install
 
  #### bamazonManager.js
 
-*  what it does/ menu options what eatch do/ link to video
+*  
+	*`View Products for Sale`
+	*`View Low Inventory`
+	*`Add to Inventory`
+	*`Add New Product`
 
 <img src="/images/manager.png" alt="bamazonManager screenshot" width="640">
 
@@ -66,7 +70,10 @@ $ npm install
 
 #### bamazonSupervisor.js
 
-*  what it does/ menu options what eatch do/ link to video
+*  Displays the 'Supervisors Menu' on the console with the following options:
+	*`View Products Sales By Department`
+	*`Create New Department`
+	
 
 
 <img src="/images/supervisor.png" alt="bamazonSupervisor screenshot" width="640">

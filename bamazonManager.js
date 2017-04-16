@@ -43,7 +43,7 @@ function mainMenu()
 	INQUIRER.prompt([
 	{
 		type: 'list',
-		message: "**MAIN MENU**",
+		message: "**MANAGER MENU**",
 		choices: [	"View Products for Sale",
 	     			"View Low Inventory",
 	    			"Add to Inventory",
