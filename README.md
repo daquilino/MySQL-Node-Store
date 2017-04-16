@@ -60,8 +60,11 @@ $ npm install
 *  Displays the 'Manager Menu' on the console with the following options:
 	
 	* `View Products for Sale` - Displays a table to the console of all products including their id, name, price, and quantity.
+
 	* `View Low Inventory` - Displays a table to the console of all product who's quantity is less than 5.
+
 	* `Add to Inventory` - Allows the manager to add to any products quantity which is updated to the database using MySQL.
+	
 	* `Add New Product` -  Allow the manager to add a new product which is updated to the database using MySQL.
 
 <img src="/images/manager.png" alt="bamazonManager screenshot" width="640">
